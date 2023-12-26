@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://chgbrjmn5hvhq"]
+
+[ext_resource type="Script" path="res://dice.gd" id="1_fsucw"]
+[ext_resource type="Texture2D" uid="uid://bjqwmh81eflkb" path="res://dice.png" id="1_i4qtx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mtx1"]
+atlas = ExtResource("1_i4qtx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkopx"]
+atlas = ExtResource("1_i4qtx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbhiw"]
+atlas = ExtResource("1_i4qtx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyil2"]
+atlas = ExtResource("1_i4qtx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5mlu"]
+atlas = ExtResource("1_i4qtx")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_421dv"]
+atlas = ExtResource("1_i4qtx")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7niq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mtx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkopx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbhiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyil2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5mlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_421dv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Dice" type="Node2D"]
+script = ExtResource("1_fsucw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 1)
+scale = Vector2(8.5, 8.5)
+sprite_frames = SubResource("SpriteFrames_7niq4")
+frame = 1
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="RollTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="RollTimer" to="." method="_on_timer_timeout"]

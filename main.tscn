@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyniu87iu16m6"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_m1a3l"]
+[ext_resource type="Script" path="res://Dice_Manager.gd" id="2_1561q"]
+[ext_resource type="Script" path="res://scripts/DiceRollButton.gd" id="2_wcnn4"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_m1a3l")
+
+[node name="Dice_Manager" type="Marker2D" parent="."]
+position = Vector2(64, 64)
+script = ExtResource("2_1561q")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 576.0
+
+[node name="RollButton" type="Button" parent="Container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_right = 0.839
+anchor_bottom = 0.25
+offset_left = -0.128004
+offset_right = -0.176018
+theme_override_font_sizes/font_size = 24
+text = "Roll Dice"
+script = ExtResource("2_wcnn4")
+
+[node name="DiceLabel" type="Label" parent="Container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.143
+anchor_top = 0.375
+anchor_right = 0.143
+anchor_bottom = 0.375
+offset_left = -64.064
+offset_top = -1.52588e-05
+offset_right = 191.936
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(1, 0.937255, 0.552941, 1)
+theme_override_font_sizes/font_size = 92
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="button_up" from="Container/RollButton" to="Container/RollButton" method="_on_button_up"]
